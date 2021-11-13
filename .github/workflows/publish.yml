@@ -54,6 +54,6 @@ jobs:
           images: |
             ${{ secrets.DOCKER_USERNAME }}/${{ github.repository }}
             ghcr.io/${{ github.repository }}
-          flavor:
+          flavor: |
             latest=true
             prefix=${{ steps.hass_version.outputs.version }}-,onlatest=false
