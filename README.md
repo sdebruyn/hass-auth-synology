@@ -1,5 +1,10 @@
 # Authentication provider using Synology DSM users for Home Assistant
 
+![GitHub branch checks state](https://img.shields.io/github/checks-status/sdebruyn/hass-auth-synology/main?label=build)
+![Codecov](https://img.shields.io/codecov/c/github/sdebruyn/hass-auth-synology?token=XC9UFW1RKH)
+![Maintenance](https://img.shields.io/maintenance/yes/2021)
+![GitHub](https://img.shields.io/github/license/sdebruyn/hass-auth-synology)
+
 The Synology authentication provider lets you authenticate using the users in your Synology DSM. Anyone with a user account on your Synology NAS will be able to login.
 
 The provider supports 2-factor authentication, according to what is configured in DSM.
