@@ -52,7 +52,7 @@ jobs:
         uses: docker/metadata-action@v3.6.0
         with:
           images: |
-            samueldebruyn/hass-auth-synology
+            ${{ secrets.DOCKER_USERNAME }}/${{ github.repository }}
             ghcr.io/${{ github.repository }}
           flavor:
             latest=true
