@@ -53,10 +53,10 @@ jobs:
       - name: Prepare tags
         id: prep
         run: |
-          hass_version=$(poetry show homeassistant | grep 'version' \
+          hass_version=$(poetry show homeassistant | grep '^version' \
             | cut -d':' -f 2 | awk '{$1=$1};1')
           pkg_version=$(poetry version -s)
           combined_version="${hass_version}-${pkg_version}"
           echo $hass_version
           echo $pkg_version
-          echo "${{ steps.prep.outputs.tags }}"
+          echo "${{ steps.meta.outputs.tags }}"
