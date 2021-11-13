@@ -57,11 +57,8 @@ jobs:
             | cut -d':' -f 2 | awk '{$1=$1};1')
           pkg_version=$(poetry version -s)
           combined_version="${hass_version}-${pkg_version}"
-          echo $hass_version
-          echo $pkg_version
-          echo $combined_version
           tagfile="${{ runner.temp }}/tags"
-          echo $tagfile
           echo "${{ steps.meta.outputs.tags }}" > $tagfile
           sed -i "s/${pkg_version}/${combined_version}/g" $tagfile
+          sed -iz 's/\n/,/g;s/,$/\n/' $tagfile
           cat $tagfile
