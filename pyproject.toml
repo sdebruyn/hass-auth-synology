@@ -19,6 +19,9 @@ requests-mock = "^1.9.3"
 pytest-aiohttp = "^0.3.0"
 coverage = "^6.1.2"
 
+[tool.poetry.scripts]
+hass-auth-synology = "hass_auth_synology.install:cli"
+
 [tool.isort]
 profile = "black"
 
