@@ -56,9 +56,8 @@ jobs:
           hass_version=$(poetry show homeassistant | grep '^version' \
             | cut -d':' -f 2 | awk '{$1=$1};1')
           pkg_version=$(poetry version -s)
-          combined_version="${hass_version}-${pkg_version}"
-          tagfile="${{ runner.temp }}/tags"
-          echo "${{ steps.meta.outputs.tags }}" > $tagfile
-          sed -i "s/${pkg_version}/${combined_version}/g" $tagfile
-          cat $tagfile | tr '\n' ',' > $tagfile
-          cat $tagfile
+          comb_version="${hass_version}-${pkg_version}"
+          echo "${{ steps.meta.outputs.tags }}" > ${{ runner.temp }}/tags
+          sed -i "s/${pkg_version}/${comb_version}/g" ${{ runner.temp }}/tags
+          cat ${{ runner.temp }}/tags | tr '\n' ',' > ${{ runner.temp }}/tags
+          cat ${{ runner.temp }}/tags
