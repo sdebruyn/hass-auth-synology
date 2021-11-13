@@ -30,7 +30,7 @@ def install() -> None:
     target_path = os.path.join(providers_dir_path, "synology.py")
     current_path = os.path.abspath(__file__)
     current_dir_path = os.path.dirname(current_path)
-    source_path = os.path.join(current_dir_path, "__init__.py")
+    source_path = os.path.join(current_dir_path, "synology.py")
 
     print(f"Installing Synology provider from {source_path} into {target_path}")
     shutil.copyfile(source_path, target_path)

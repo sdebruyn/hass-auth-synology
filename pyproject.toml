@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hass-auth-synology"
-version = "0.2.0"
+version = "0"
 description = "Synology authentication provider for Home Assistant"
 authors = ["Sam Debruyn <sam@debruyn.dev>"]
 license = "Apache-2.0"

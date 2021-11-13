@@ -9,7 +9,7 @@ from homeassistant.auth.auth_store import AuthStore
 from homeassistant.const import EVENT_HOMEASSISTANT_CLOSE
 from homeassistant.core import HomeAssistant
 
-from src.hass_auth_synology import (
+from src.hass_auth_synology.synology import (
     Synology2FAError,
     SynologyAuthenticationError,
     SynologyAuthProvider,

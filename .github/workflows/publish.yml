@@ -8,7 +8,6 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python
@@ -16,6 +15,8 @@ jobs:
         with:
           python-version: "3.8"
       - uses: Gr1N/setup-poetry@v7
+      - name: Set version
+        run: poetry version $(git describe --tags --abbrev=0)
       - name: Build
         run: poetry build
       - name: Publish
