@@ -58,6 +58,8 @@ jobs:
           pkg_version=$(poetry version -s)
           comb_version="${hass_version}-${pkg_version}"
           echo "${{ steps.meta.outputs.tags }}" > ${{ runner.temp }}/tags
+          cat ${{ runner.temp }}/tags
           sed -i "s/${pkg_version}/${comb_version}/g" ${{ runner.temp }}/tags
+          cat ${{ runner.temp }}/tags
           cat ${{ runner.temp }}/tags | tr '\n' ',' > ${{ runner.temp }}/tags
           cat ${{ runner.temp }}/tags
