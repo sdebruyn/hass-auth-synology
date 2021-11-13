@@ -1,11 +1,26 @@
 [tool.poetry]
 name = "hass-auth-synology"
-version = "0.1.0"
+version = "0.2.0"
 description = "Synology authentication provider for Home Assistant"
 authors = ["Sam Debruyn <sam@debruyn.dev>"]
-license = "MIT"
+license = "Apache-2.0"
+readme = "README.md"
+homepage = "https://github.com/sdebruyn/hass-auth-synology"
+repository = "https://github.com/sdebruyn/hass-auth-synology"
+keywords = "synology,authentication,homeassistant,hass"
 packages = [
     { include = "hass_auth_synology", from = "src" },
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Home Automation",
+    "Topic :: Security"
 ]
 
 [tool.poetry.dependencies]
