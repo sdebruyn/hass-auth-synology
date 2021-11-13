@@ -7,7 +7,12 @@ license = "Apache-2.0"
 readme = "README.md"
 homepage = "https://github.com/sdebruyn/hass-auth-synology"
 repository = "https://github.com/sdebruyn/hass-auth-synology"
-keywords = "synology,authentication,homeassistant,hass"
+keywords = [
+    "synology",
+    "authentication",
+    "homeassistant",
+    "hass"
+]
 packages = [
     { include = "hass_auth_synology", from = "src" },
 ]
