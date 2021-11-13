@@ -1,0 +1,21 @@
+name: Publish
+on:
+  push:
+    branches:
+      - main
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+      - uses: Gr1N/setup-poetry@v7
+      - name: Build
+        run: poetry build
+      - name: Publish
+        run: poetry publish
+        env:
+          POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PyPiToken }}
