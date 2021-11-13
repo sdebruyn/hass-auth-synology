@@ -21,7 +21,7 @@ jobs:
         run: poetry version $(git describe --tags --abbrev=0)
 
       - name: Build wheel
-        run: poetry build -f wheel
+        run: poetry build
 
       - uses: docker/setup-qemu-action@v1.2.0
 
