@@ -60,5 +60,5 @@ jobs:
           tagfile="${{ runner.temp }}/tags"
           echo "${{ steps.meta.outputs.tags }}" > $tagfile
           sed -i "s/${pkg_version}/${combined_version}/g" $tagfile
-          sed -iz 's/\n/,/g;s/,$/\n/' $tagfile
+          cat $tafile | tr '\n' ',' > $tagfile
           cat $tagfile
