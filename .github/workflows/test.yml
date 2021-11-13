@@ -15,11 +15,10 @@ jobs:
       - uses: Gr1N/setup-poetry@v7
       - uses: actions/cache@v2
         with:
-          path: ~/.cache/pypoetry/virtualenvs
+          path: ~/.cache
           key: "${{ runner.os }}-\
             ${{ matrix.python-version }}-\
-            poetry-\
-            ${{ hashFiles('poetry.lock') }}"
+            ${{ hashFiles('poetry.lock', '.pre-commit-config.yaml') }}"
       - name: Install dependencies
         run: poetry install
       - name: Verify formatting
