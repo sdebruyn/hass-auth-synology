@@ -59,4 +59,9 @@ jobs:
           combined_version="${hass_version}-${pkg_version}"
           echo $hass_version
           echo $pkg_version
-          echo "${{ steps.meta.outputs.tags }}"
+          echo $combined_version
+          tagfile="${{ runner.temp }}/tags"
+          echo $tagfile
+          echo "${{ steps.meta.outputs.tags }}" > $tagfile
+          sed -i "s/${pkg_version}/${combined_version}/g" $tagfile
+          cat $tagfile
