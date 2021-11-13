@@ -1,23 +1,62 @@
+---
 name: Publish
 on:
   push:
     tags:
       - 'v*'
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
+
       - uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
+
+      - uses: actions/setup-python@v2
         with:
           python-version: "3.8"
       - uses: Gr1N/setup-poetry@v7
+
       - name: Set version
         run: poetry version $(git describe --tags --abbrev=0)
+
       - name: Build
         run: poetry build
-      - name: Publish
-        run: poetry publish
-        env:
-          POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PyPiToken }}
+
+      - uses: docker/setup-qemu-action@v1.2.0
+
+      - uses: docker/setup-buildx-action@v1.6.0
+        with:
+          platforms: all
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1.10.0
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v1.10.0
+        with:
+          registry: ghcr.io
+          username: ${{ secrets.GH_USERNAME }}
+          password: ${{ secrets.GH_PAT }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v3.6.0
+        with:
+          images: |
+            samueldebruyn/hass-auth-synology
+            ghcr.io/${{ github.repository }}
+
+      - name: Prepare tags
+        id: prep
+        run: |
+          hass_version=$(poetry show homeassistant | grep 'version' \
+            | cut -d':' -f 2 | awk '{$1=$1};1')
+          pkg_version$(poetry version -s)
+          combined_version="${hass_version}-${pkg_version}"
+          echo $hass_version
+          echo $pkg_version
+          echo "${{ steps.prep.outputs.tags }}"
