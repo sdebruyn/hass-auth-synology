@@ -40,6 +40,13 @@ jobs:
           username: ${{ secrets.GH_USERNAME }}
           password: ${{ secrets.GH_PAT }}
 
+      - name: Find hass version
+        id: hass_version
+        run: |
+          hass_version=$(poetry show homeassistant | grep '^version' \
+            | cut -d':' -f 2 | awk '{$1=$1};1')
+          echo ::set-output name=version::$hass_version
+
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v3.6.0
@@ -47,17 +54,6 @@ jobs:
           images: |
             samueldebruyn/hass-auth-synology
             ghcr.io/${{ github.repository }}
-
-      - name: Prepare tags
-        id: prep
-        run: |
-          hass_version=$(poetry show homeassistant | grep '^version' \
-            | cut -d':' -f 2 | awk '{$1=$1};1')
-          pkg_version=$(poetry version -s)
-          comb_version="${hass_version}-${pkg_version}"
-          echo "${{ steps.meta.outputs.tags }}" > ${{ runner.temp }}/tags
-          sed -i "s/${pkg_version}/${comb_version}/g" ${{ runner.temp }}/tags
-          echo ::set-output name=tags::$(cat ${{ runner.temp }}/tags)
-
-      - name: Test output
-        run: echo ${{ steps.prep.outputs.tags }}
+          flavor:
+            latest=true
+            prefix=${{ steps.hass_version.outputs.version }}-,onlatest=false
