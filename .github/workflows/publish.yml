@@ -63,3 +63,7 @@ jobs:
           cat ${{ runner.temp }}/tags
           cat ${{ runner.temp }}/tags | tr '\n' ',' > ${{ runner.temp }}/tags
           cat ${{ runner.temp }}/tags
+          echo ::set-output name=tags::$(cat ${{ runner.temp }}/tags)
+
+      - name: Test output
+        run: echo ${{ steps.prep.outputs.tags }}
