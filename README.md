@@ -1,5 +1,6 @@
 # Authentication provider using Synology DSM users for Home Assistant
 
+![PyPI](https://img.shields.io/pypi/v/hass-auth-synology)
 ![GitHub branch checks state](https://img.shields.io/github/checks-status/sdebruyn/hass-auth-synology/main?label=build)
 ![Codecov](https://img.shields.io/codecov/c/github/sdebruyn/hass-auth-synology?token=XC9UFW1RKH)
 ![Maintenance](https://img.shields.io/maintenance/yes/2021)
