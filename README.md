@@ -3,7 +3,7 @@
 ![PyPI](https://img.shields.io/pypi/v/hass-auth-synology)
 ![GitHub branch checks state](https://img.shields.io/github/checks-status/sdebruyn/hass-auth-synology/main?label=build)
 ![Codecov](https://img.shields.io/codecov/c/github/sdebruyn/hass-auth-synology?token=XC9UFW1RKH)
-![Maintenance](https://img.shields.io/maintenance/yes/2021)
+![Maintenance](https://img.shields.io/maintenance/yes/2022)
 ![GitHub](https://img.shields.io/github/license/sdebruyn/hass-auth-synology)
 
 The Synology authentication provider lets you authenticate using the users in your Synology DSM. Anyone with a user account on your Synology NAS will be able to login.
