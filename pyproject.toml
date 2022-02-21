@@ -35,7 +35,7 @@ homeassistant = "^2022.2.1"
 pre-commit = "^2.17.0"
 pytest = "^7.0.1"
 requests-mock = "^1.9.3"
-pytest-aiohttp = "^0.3.0"
+pytest-aiohttp = "^1.0.4"
 pytest-cov = "^3.0.0"
 
 [tool.poetry.scripts]
