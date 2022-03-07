@@ -2,6 +2,7 @@
 import asyncio
 import json as _json
 import re
+from contextlib import contextmanager
 from http import HTTPStatus
 from unittest import mock
 from urllib.parse import parse_qs
@@ -9,6 +10,7 @@ from urllib.parse import parse_qs
 from aiohttp import ClientSession
 from aiohttp.client_exceptions import ClientError, ClientResponseError
 from aiohttp.streams import StreamReader
+from homeassistant.const import EVENT_HOMEASSISTANT_CLOSE
 from multidict import CIMultiDict
 from yarl import URL
 
@@ -268,6 +270,29 @@ class AiohttpClientMockResponse:
 
     def close(self):
         """Mock close."""
+
+
+@contextmanager
+def mock_aiohttp_client():
+    """Context manager to mock aiohttp client."""
+    mocker = AiohttpClientMocker()
+
+    def create_session(hass, *args, **kwargs):
+        session = mocker.create_session(hass.loop)
+
+        async def close_session(event):
+            """Close session."""
+            await session.close()
+
+        hass.bus.async_listen_once(EVENT_HOMEASSISTANT_CLOSE, close_session)
+
+        return session
+
+    with mock.patch(
+        "homeassistant.helpers.aiohttp_client._async_create_clientsession",
+        side_effect=create_session,
+    ):
+        yield mocker
 
 
 class MockLongPollSideEffect:
