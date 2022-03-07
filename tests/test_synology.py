@@ -16,7 +16,7 @@ from src.hass_auth_synology.synology import (
     SynologyConnectionError,
     SynologyLoginError,
 )
-from tests.hass_util.aiohttp import AiohttpClientMocker
+from tests.test_util.aiohttp import AiohttpClientMocker
 
 
 @pytest.fixture(scope="session", autouse=True)
