@@ -253,7 +253,7 @@ async def async_test_home_assistant(loop, load_registries=True):
 
         return_when = asyncio.ALL_COMPLETED
         if max_remaining_tasks:
-            return_when = asyncio.FIRST_COMPLETED
+            return_when = asyncio.FIRST_COMPLETED  # type: ignore
 
         while len(pending) > max_remaining_tasks:
             _, pending = await asyncio.wait(
