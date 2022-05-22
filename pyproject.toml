@@ -40,7 +40,7 @@ pytest-cov = "2.12.1"
 freezegun = "1.2.1"
 pytest-socket = "0.4.1"
 paho-mqtt = "1.6.1"
-SQLAlchemy = "1.4.35"
+SQLAlchemy = "1.4.36"
 lru-dict = "1.1.7"
 fnvhash = "0.1.0"
 
