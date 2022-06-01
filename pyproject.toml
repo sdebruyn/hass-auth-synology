@@ -29,20 +29,10 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.9"
-homeassistant = "^2022.4.0"
+homeassistant = "^2022.5.0"
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^2.19.0"
-pytest = "7.1.1"
-requests-mock = "^1.9.2"
-pytest-aiohttp = "^0.3.0"
-pytest-cov = "2.12.1"
-freezegun = "1.2.1"
-pytest-socket = "0.4.1"
-paho-mqtt = "1.6.1"
-SQLAlchemy = "1.4.36"
-lru-dict = "1.1.7"
-fnvhash = "0.1.0"
 
 [tool.poetry.scripts]
 hass-auth-synology = "hass_auth_synology.install:cli"

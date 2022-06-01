@@ -37,9 +37,3 @@ jobs:
 
       - name: Verify formatting
         run: poetry run pre-commit run -a
-
-      - name: Run tests
-        run: poetry run pytest --cov=./ --cov-report=xml
-
-      - name: Codecov
-        uses: codecov/codecov-action@v3
