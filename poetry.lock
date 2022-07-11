@@ -368,7 +368,7 @@ test = ["appdirs (==1.4.4)", "pytest-cov (>=2.7)", "pytest-mock (>=3.6)", "pytes
 
 [[package]]
 name = "pre-commit"
-version = "2.19.0"
+version = "2.20.0"
 description = "A framework for managing and maintaining multi-language pre-commit hooks."
 category = "dev"
 optional = false
@@ -571,7 +571,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "8bb9db1145f9e447c09a8ff8e01417fb8fe458eb40a456cbc6c74a65bee0ec7d"
+content-hash = "8df6b5e14b65d039c11ce8a5e049d9426a23691b9cf99ef33be2d8a1baefe4ff"
 
 [metadata.files]
 aiohttp = []
